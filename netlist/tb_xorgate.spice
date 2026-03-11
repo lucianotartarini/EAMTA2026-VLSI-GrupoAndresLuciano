@@ -1,0 +1,71 @@
+** sch_path: /home/eamtastudent/EAMTA2026-VLSI/verification/testbenches/tb_xorgate.sch
+**.subckt tb_xorgate
+C1 net1 avss1p8 1p
+V4 avss1p8 GND DC{vss}
+V5 avdd1p8 avss1p8 DC{vdd}
+V6 vb avss1p8 PULSE({vdd} 0 0.0 1p 1p {Tclk/4} {Tclk/2}) DC 0 AC 0
+x2 avdd1p8 net1 vout avss1p8 inverter
+V1 va avss1p8 PULSE({vdd} 0 0.0 1p 1p {Tclk/2} {Tclk}) DC 0 AC 0
+x1 va avdd1p8 vb avss1p8 vout xorgate
+**** begin user architecture code
+
+
+* Circuit Parameters
+.param vdd = 1.2
+.param vss = 0.0
+.param Tclk = 10n
+.options TEMP = 27.0
+* Include Models - IHP SG13G2
+.lib cornerMOSlv.lib mos_tt
+* OP Parameters & Singals to save
+.save all
+*Simulations
+.control
+tran 0.01u 100n
+setplot tran1
+plot v(va) v(vb) + 1.2 v(vout) + 2.4
+set filetype = ascii
+write dcsweep.raw
+.endc
+.end
+
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  blocks/inverter/schematic/inverter.sym # of pins=4
+** sym_path: /home/eamtastudent/EAMTA2026-VLSI/design/blocks/inverter/schematic/inverter.sym
+** sch_path: /home/eamtastudent/EAMTA2026-VLSI/design/blocks/inverter/schematic/inverter.sch
+.subckt inverter vdd out in vss
+*.iopin vdd
+*.iopin out
+*.iopin vss
+*.iopin in
+XM1 out in vss vss sg13_lv_nmos w=0.15u l=0.13u ng=1
+XM2 out in vdd vdd sg13_lv_pmos w=0.5u l=0.13u ng=1
+.ends
+
+
+* expanding   symbol:  blocks/xorgate/schematic/xorgate.sym # of pins=5
+** sym_path: /home/eamtastudent/EAMTA2026-VLSI/design/blocks/xorgate/schematic/xorgate.sym
+** sch_path: /home/eamtastudent/EAMTA2026-VLSI/design/blocks/xorgate/schematic/xorgate.sch
+.subckt xorgate a vdd b vss out
+*.iopin a
+*.iopin b
+*.iopin vdd
+*.iopin vss
+*.iopin out
+XM3 out a net1 vdd sg13_lv_pmos w=1.5u l=0.15u ng=1
+XM1 out b net1 vdd sg13_lv_pmos w=0.75u l=0.15u ng=1
+XM4 out na net2 vss sg13_lv_nmos w=0.75u l=0.15u ng=1
+x1 vdd nb b vss inverter
+x2 vdd na a vss inverter
+XM2 net1 nb vdd vdd sg13_lv_pmos w=0.75u l=0.15u ng=1
+XM5 net1 na vdd vdd sg13_lv_pmos w=1.5u l=0.15u ng=1
+XM7 out a net3 vss sg13_lv_nmos w=0.15u l=0.15u ng=1
+XM8 net2 nb vss vss sg13_lv_nmos w=0.3u l=0.15u ng=1
+XM9 net3 b vss vss sg13_lv_nmos w=0.3u l=0.15u ng=1
+.ends
+
+.GLOBAL GND
+.end

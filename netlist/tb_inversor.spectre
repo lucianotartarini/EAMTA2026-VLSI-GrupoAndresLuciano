@@ -1,0 +1,49 @@
+// sch_path: /home/eamtastudent/EAMTA2026-VLSI/verification/testbenches/tb_inversor.sch
+//subckt tb_inversor ( )
+C1 ( net1 avss1p8 ) capacitor c=1p $mfactor=1 
+V1 ( avss1p8 GND ) vsource cd{vss} 
+V2 ( avdd1p8 avss1p8 ) vsource 3 
+V3 ( vin avss1p8 ) vsource 3 
+//// begin user architecture code
+
+
+* Circuit Parameters
+.param vdd = 1.2
+.param vss = 0.0
+.param Tclk = 10n
+.options TEMP = 27.0
+* Include Models - IHP SG13G2
+.lib cornerMOSlv.lib mos_tt
+* OP Parameters & Singals to save
+.save all
+*Simulations
+.control
+tran 0.01u 100n
+setplot tran1
+plot v(vin) v(vout)+1.2
+reset
+dc V6 0 1.2 0.01
+setplot dc
+plot vin vout ylabel vout xlabel vin
+set filetype = ascii
+write dcsweep.raw
+.endc
+.end
+
+
+//// end user architecture code
+//ends
+
+// expanding   symbol:  blocks/inverter/schematic/inverter.sym # of pins=4
+// sym_path: /home/eamtastudent/EAMTA2026-VLSI/design/blocks/inverter/schematic/inverter.sym
+// sch_path: /home/eamtastudent/EAMTA2026-VLSI/design/blocks/inverter/schematic/inverter.sch
+subckt inverter ( ) 
+parameters 
+ends 
+
+ground GND 
+//// begin user architecture code
+model vsource vsource
+load "capacitor.osdi"
+model capacitor capacitor
+//// end user architecture code
