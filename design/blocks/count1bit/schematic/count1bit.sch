@@ -41,3 +41,5 @@ C {blocks/andgate/schematic/andgate.sym} -460 -130 1 0 {name=x1}
 C {lab_pin.sym} -360 -50 2 0 {name=p5 sig_type=std_logic lab=vdd}
 C {lab_pin.sym} -510 -90 0 0 {name=p6 sig_type=std_logic lab=vss}
 C {blocks/dff/schematic/dff.sym} 30 -180 2 0 {name=x3}
+C {iopin.sym} -120 -220 2 0 {name=p7 lab=nclck}
+C {iopin.sym} -210 -290 3 0 {name=p8 lab=bit}
