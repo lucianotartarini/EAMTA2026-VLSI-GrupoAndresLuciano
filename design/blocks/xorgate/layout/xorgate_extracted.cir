@@ -1,4 +1,4 @@
-* Extracted by KLayout with SG13G2 LVS runset on : 16/03/2026 15:22
+* Extracted by KLayout with SG13G2 LVS runset on : 30/03/2026 23:44
 
 .SUBCKT xorgate
 M$1 \$1 \$6 \$3 \$1 sg13_lv_nmos L=0.15u W=1.5u AS=0.51p AD=0.285p PS=3.68u
