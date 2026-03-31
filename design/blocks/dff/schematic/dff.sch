@@ -46,6 +46,10 @@ N 560 1190 560 1220 {lab=clk}
 N 610 1190 610 1220 {lab=vdd}
 N 420 1060 420 1080 {lab=clk}
 N 420 1160 420 1200 {lab=nclk}
+N 570 870 570 900 {lab=vdd}
+N 570 960 590 960 {lab=vss}
+N 500 930 520 930 {lab=#net6}
+N 600 930 670 930 {lab=nclk}
 C {blocks/transmissiongate/schematic/transmissiongate.sym} 440 1130 0 0 {name=x1}
 C {blocks/norgate/schematic/norgate.sym} 680 1120 0 0 {name=x2}
 C {blocks/inverter/schematic/inverter.sym} 550 1110 0 0 {name=x5}
@@ -103,14 +107,27 @@ C {iopin.sym} 670 1100 2 0 {name=p7 lab=rst
 C {iopin.sym} 420 1060 3 0 {name=p13 lab=clk
 
 }
-C {iopin.sym} 420 1200 1 0 {name=p2 lab=nclk
-
-}
 C {lab_pin.sym} 560 1330 3 0 {name=p8 sig_type=std_logic lab=nclk
 
 
 }
 C {lab_pin.sym} 920 1020 1 0 {name=p34 sig_type=std_logic lab=nclk
 
+
+}
+C {blocks/inverter/schematic/inverter.sym} 550 920 0 0 {name=x9}
+C {lab_pin.sym} 590 960 2 0 {name=p15 sig_type=std_logic lab=vss
+}
+C {lab_pin.sym} 570 870 0 0 {name=p17 sig_type=std_logic lab=vdd
+}
+C {lab_pin.sym} 670 930 2 0 {name=p30 sig_type=std_logic lab=nclk
+
+
+}
+C {lab_pin.sym} 420 1200 3 0 {name=p2 sig_type=std_logic lab=nclk
+
+
+}
+C {lab_pin.sym} 500 930 0 0 {name=p18 sig_type=std_logic lab=clk
 
 }
