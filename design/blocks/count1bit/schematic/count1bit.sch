@@ -21,14 +21,13 @@ N -380 -90 -380 -50 {lab=vdd}
 N -410 -90 -380 -90 {lab=vdd}
 N -140 -230 -120 -230 {lab=vdd}
 N -140 -190 -120 -190 {lab=rst}
-N -140 -130 -120 -130 {lab=#net2}
+N -140 -130 -120 -130 {lab=vss}
 N -140 -150 -120 -150 {lab=clk}
-N -210 -170 -120 -170 {lab=bit}
-N -210 -170 -210 -160 {lab=bit}
 N -440 -290 -210 -290 {lab=bit}
 N -240 -210 -120 -210 {lab=#net1}
 N -240 -210 -240 -170 {lab=#net1}
 N -210 -290 -210 -170 {lab=bit}
+N -210 -170 -120 -170 {lab=bit}
 C {blocks/xorgate/schematic/xorgate.sym} -410 -170 0 0 {name=x2}
 C {iopin.sym} -550 -160 2 0 {name=p2 lab=in}
 C {iopin.sym} -140 -150 2 0 {name=p13 lab=clk}
